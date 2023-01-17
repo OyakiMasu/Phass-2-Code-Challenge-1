@@ -18,6 +18,8 @@ This project was build with :
     <li>Project Guidelines</li>
  </ol>
 
+ The link to the website ......
+
 ### Intro 
 For this assignment we were dealing with React to create the bank of flatiron.
 
