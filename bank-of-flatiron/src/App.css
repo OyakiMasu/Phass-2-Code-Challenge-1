@@ -40,6 +40,14 @@
 
 h2 {
   text-align: center;
+  background-color: aliceblue;
    color: grey;
 
+}
+div {
+  background-color: azure;
+}
+
+label {
+  text-align: center;
 }

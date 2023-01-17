@@ -1,6 +1,5 @@
 import React from "react"
 
-
  function TransactionData(
     { category, date, description, amount})
     {

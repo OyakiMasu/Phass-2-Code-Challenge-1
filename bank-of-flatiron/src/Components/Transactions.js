@@ -1,15 +1,19 @@
 import React, { useEffect, useState } from "react"
-import TransactionData from "./TransactionIData"
+ import TransactionData from "./TransactionIData"
+ import FormData from "./FormData"
 
+ 
 function Transactions() {
     const [transactions, setTransactions] = useState([])
+    // console.log(transactions)
+
     useEffect(() => {
         fetch("http://localhost:3000/transactions")
             .then(response => response.json())
             .then(transactions => setTransactions(transactions))
-            .catch(err => console.log(err))
+            // .catch(err => console.log(err))
     }, [])
-     console.log(transactions);
+
     return (
         <>  
             <table>
@@ -19,18 +23,21 @@ function Transactions() {
                     <th>Description</th>
                     <th>Amount</th>
                 </tr>
-               
-                {transactions.map((transaction)=>{
-                    return <TransactionData
-                    // index={index}
-                    date={transaction.date}
-                    category={transaction.category}
-                    description={transaction.description}
-                    amount={transaction.amount}
-                    key={transaction.id}
-                    />
+                
+                         
+{/* This will help print the content to the table */}
 
+        {transactions.map((transaction) => {
+            return <TransactionData 
+            date = {transaction.date}
+            category = {transaction.category}
+            description = {transaction.description}
+            amount = {transaction.amount}
+            key = {transaction.id}
+
+        />
                 })}
+                <FormData/>
             </table>
         </>
     )

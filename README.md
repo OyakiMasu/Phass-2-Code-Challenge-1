@@ -1,4 +1,6 @@
-# CODE CHALLENGE ---BANK OF FLATIRON ---
+# CODE CHALLENGE 
+
+# ---BANK OF FLATIRON ---
 
 This project was build with :
 
