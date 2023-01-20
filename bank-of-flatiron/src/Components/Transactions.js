@@ -1,11 +1,12 @@
 import React, { useEffect, useState } from "react"
- import TransactionData from "./TransactionIData"
- import FormData from "./FormData"
+import TransactionData from "./TransactionIData"
+import FormData from "./FormData"
+import SearchBar from "./SearchBar"
 
- 
 function Transactions() {
-    const [transactions, setTransactions] = useState([])
-    // console.log(transactions)
+    
+    const [transactions, setTransactions] = useState([{}])
+
 
     useEffect(() => {
         fetch("http://localhost:3000/transactions")
@@ -14,32 +15,27 @@ function Transactions() {
             // .catch(err => console.log(err))
     }, [])
 
+    function addData(display){
+        // console.log(transactions);
+        // console.log(display);
+        const newStuff = [...transactions, display];
+
+        setTransactions(newStuff)
+        // console.log(transactions);
+    }
+
+    function handleOnSearch(input){
+        console.log(input)
+        let x = transactions.filter((transaction) => {if(transaction.description === `${input}`){return transaction}})
+        setTransactions(x)
+    }
+
     return (
-        <>  
-            <table>
-                <tr>
-                    <th>Date</th>
-                    <th>Category</th>
-                    <th>Description</th>
-                    <th>Amount</th>
-                </tr>
-                
-                         
-{/* This will help print the content to the table */}
-
-        {transactions.map((transaction) => {
-            return <TransactionData 
-            date = {transaction.date}
-            category = {transaction.category}
-            description = {transaction.description}
-            amount = {transaction.amount}
-            key = {transaction.id}
-
-        />
-                })}
-                <FormData/>
-            </table>
-        </>
+    <>  
+      <SearchBar handleOnSearch={handleOnSearch} />
+      <FormData addData={addData} />
+      <TransactionData transactions={transactions}/>
+    </>
     )
 }
 export default Transactions;

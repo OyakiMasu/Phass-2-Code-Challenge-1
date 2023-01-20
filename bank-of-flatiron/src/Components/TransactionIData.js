@@ -1,16 +1,31 @@
 import React from "react"
+import TransactionRows from "./TransactionRows"
 
- function TransactionData(
-    { category, date, description, amount})
-    {
-        
+ function TransactionData({ transactions }){ 
+    // console.log(transactions)   
     return (
-        <tr>
-            <td>{date}</td>
-            <td>{category}</td>
-            <td>{description}</td>
-            <td>{amount}</td>
-        </tr>
+        <table>
+        <thead>
+            <tr>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Amount</th>
+            </tr>   
+        </thead>
+        <tbody>
+            {
+                transactions.map((transaction) => (
+                    <TransactionRows key = {transaction.id}
+                        date = {transaction.date}
+                        category = {transaction.category}
+                        description = {transaction.description}
+                        amount = {transaction.amount}  
+                    />
+                ))
+            }
+        </tbody>                    
+        </table>
     )
 }
 
